@@ -112,3 +112,4 @@ def shoot (player):
                 if player [5] =="stand" :
                     player [5] = "sleep"
                     break
+#salam
