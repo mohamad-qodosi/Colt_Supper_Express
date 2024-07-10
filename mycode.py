@@ -1,4 +1,6 @@
 def show_rail(player_list: list, rail: list) -> None:
+    n = len(rail)
+    my_strings = [] * n
     for i, value in enumerate(rail):
         if i == 0:
             box_name = "locomotive"
@@ -6,13 +8,14 @@ def show_rail(player_list: list, rail: list) -> None:
             box_name = "empty"
         else:
             box_name = f"vagon{i}"
-        for i, color in enumerate(value):
+        my_strings[i] = f"{box_name}= "
+        for j, color in enumerate(value):
             for player in player_list:
                 if player[1] == color:
                     my_player = player
                     break
-            value[i] = f"{box_name}= {color} dir:{my_player[2]} up-down:{my_player[3]} dead-alive{my_player[4]}"
-    for item in rail:
+            my_strings[i] += f"*{color} - dir:{my_player[2]} up-down:{my_player[3]} shot-status:{my_player[4]}"
+    for item in my_strings:
         print(item)
 
 def get_player_vagon(rail, color):
